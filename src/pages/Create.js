@@ -5,32 +5,27 @@ import supabase from "../config/supabaseClient"
 const Create = () => {
   const navigate = useNavigate()
 
-  const [title, setTitle] = useState('') // this is used to store the title of the smoothie
-  const [method, setMethod] = useState('') // this is used to store the method of the smoothie
-  const [rating, setRating] = useState('') // this is used to store the rating of the smoothie
-  const [formError, setFormError] = useState(null) // this is used to store the form error
+  const [title, setTitle] = useState('')
+  const [method, setMethod] = useState('')
+  const [rating, setRating] = useState('')
+  const [formError, setFormError] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // check if all fields are filled
+
     if (!title || !method || !rating) {
       setFormError('Please fill in all the fields correctly.')
       return
     }
 
-    // add a new smoothie recipe to the database
-    const { data, error } = await supabase
-      .from('recipes')
+    const { error } = await supabase
+      .from('smoothies')
       .insert([{ title, method, rating }])
 
-    // if there is an error, log it
     if (error) {
       console.log(error)
       setFormError('Please fill in all the fields correctly.')
-    }
-    // if there is no error, log the data
-    if (data) {
-      console.log(data)
+    } else {
       setFormError(null)
       navigate('/')
     }
@@ -38,7 +33,7 @@ const Create = () => {
 
   return (
     <div className="page create">
-      <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title:</label>
         <input 
           type="text" 
