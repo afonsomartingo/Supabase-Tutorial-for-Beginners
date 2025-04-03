@@ -61,6 +61,18 @@ nav h1 {
   line-height: 0px;
   text-align: center;
 }
+.smoothie-card .buttons {
+  text-align: right;
+}
+.smoothie-card i {
+  color: #bbb;
+  margin-left: 10px;
+  font-size: 1.2em;
+  padding: 6px;
+  background: #eee;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
 /* forms */
 form {
@@ -86,4 +98,30 @@ form button {
   padding: 6px 8px;
   font-family: "Poppins";
   cursor: pointer;
+}
+
+/* order-by buttons */
+.order-by {
+  margin: 20px auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.order-by button {
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-by button.active {
+  background: var(--secondary);
+}
+
+.order-by p {
+  margin: 0;
+  margin-right: 10px;
 }
